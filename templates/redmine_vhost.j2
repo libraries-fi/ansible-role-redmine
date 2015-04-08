@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+<VirtualHost *:{{apache_vhost_port}}>
+	ServerAdmin {{ server_admin_email }}
+	{% include 'apache_servername.j2' %}
+	ErrorLog /var/log/apache2/{{site_name}}_error.log
+	DocumentRoot {{redmine_path}}/public
+	
+	<Directory {{redmine_path}}/public>
+	  AllowOverride all
+	  Options -MultiViews
+	</Directory>
+	
+	PassengerDefaultUser www-data
+	RailsEnv production
+	RailsBaseURI /redmine
+	SetEnv X_DEBIAN_SITEID "default"
+	
+	<Directory {{redmine_path}}>
+	  Options -MultiViews
+	</Directory>
+</VirtualHost>

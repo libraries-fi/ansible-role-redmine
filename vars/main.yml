@@ -1,0 +1,3 @@
+---
+# vars file for verkel.redmine
+redmine_path: /srv/sites/redmine

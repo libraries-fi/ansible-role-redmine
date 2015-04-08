@@ -1,0 +1,8 @@
+---
+# tasks file for verkel.redmine
+
+- name: Create plugin_assets
+  file: path="{{ redmine_path }}/public/plugin_assets" state=directory
+
+- name: Change owner of writable directories
+  shell: "chown -R www-data:www-data files log tmp public/plugin_assets chdir={{ redmine_path }}"
