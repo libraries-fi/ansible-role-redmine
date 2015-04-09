@@ -124,7 +124,14 @@ dependencies:
   - role: apache
   - role: mtpereira.passenger
     passenger_webserver: apache
+  - role: ANXS.mysql
+  - role: ajsalminen.mysql_database
+    mysql_database_details: "{{ redmine_db }}"
   - role: krahser.redmine
+    db_name: "{{ redmine_db.name }}"
+    db_username: "{{ redmine_db.user }}"
+    db_password: "{{ redmine_db.password }}"
+    redmine_lang: "en"
   - role: apache_vhost
     vhost_template: kifi.redmine/templates/redmine_vhost.j2
   # List your role dependencies here, one per line. Only
