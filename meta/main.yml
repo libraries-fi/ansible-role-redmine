@@ -150,7 +150,7 @@ dependencies:
         dirs:
           - source: "{{ synced_config.dir }}/files/"
             target: "{{ redmine_path }}/files/"
-            rsync_params: --exclude=files/.svn
+            rsync_params: --exclude='.svn'
     when: synced_config is defined and redmine_sync|default(false)
 
   - role: apache_vhost
