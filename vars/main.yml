@@ -1,3 +1,3 @@
 ---
 # vars file for verkel.redmine
-redmine_path: /srv/sites/redmine
+redmine_path: "/srv/sites/{{ site_name }}/redmine"
