@@ -6,3 +6,7 @@
 
 - name: Change owner of writable directories
   shell: "chown -R www-data:www-data files log tmp public/plugin_assets chdir={{ redmine_path }}"
+
+- name: Restart apache
+  action: service name=apache2 state=restarted
+  when: synced_config is defined and redmine_sync|default(false)
