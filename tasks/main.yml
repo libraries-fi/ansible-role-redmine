@@ -7,6 +7,10 @@
 - name: Change owner of writable directories
   shell: "chown -R www-data:www-data files log tmp public/plugin_assets chdir={{ redmine_path }}"
 
+- name: Install redmine configuration
+  template: src=configuration.yml.j2 dest={{ redmine_path }}/config/configuration.yml
+  register: redmine_config
+
 - name: Restart apache
   action: service name=apache2 state=restarted
-  when: synced_config is defined and redmine_sync|default(false)
+  when: (synced_config is defined and redmine_sync|default(false)) or redmine_config.changed
