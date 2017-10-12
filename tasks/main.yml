@@ -16,3 +16,9 @@
     name: libapache2-mod-passenger
     state: present
   notify: reload apache
+
+- name: Restart Passenger if data has been synced
+  service:
+    name: apache2
+    state: reloaded
+  when: synced_config is defined and redmine_sync|default(false)
