@@ -123,9 +123,6 @@ galaxy_info:
 dependencies:
   - role: apache
 
-  - role: mtpereira.passenger
-    passenger_webserver: apache
-
   - role: ANXS.mysql
 
   - role: ajsalminen.mysql_database
