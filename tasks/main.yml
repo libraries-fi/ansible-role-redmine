@@ -11,6 +11,12 @@
   template: src=configuration.yml.j2 dest={{ redmine_path }}/config/configuration.yml
   notify: reload apache
 
+- name: Install Passenger
+  package:
+    name: libapache2-mod-passenger
+    state: present
+  notify: reload apache
+
 - name: Restart Passenger if data has been synced
   service:
     name: apache2

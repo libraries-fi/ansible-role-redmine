@@ -17,7 +17,6 @@ Dependencies
 ------------
 
 apache
-mtpereira.passenger
 krahser.redmine
 
 Example Playbook
